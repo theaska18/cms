@@ -6,3 +6,9 @@ services:
       - PORT:80
     volumes:
       - ./app:/var/www/html
+    networks:
+      - cms-MODE
+    restart: always
+networks:
+  cms-MODE:
+    external: true
