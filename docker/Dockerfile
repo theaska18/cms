@@ -2,7 +2,15 @@
 FROM php:8.1-apache
 
 # Instal ekstensi PHP yang dibutuhkan CodeIgniter
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    libicu-dev \
+    libxml2-dev \
+    libmysqlclient-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd mysqli pdo pdo_mysql
 
 # Salin file konfigurasi
 COPY docker/php.ini /usr/local/etc/php/
