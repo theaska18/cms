@@ -20,10 +20,13 @@ jobs:
         id: set_image_name
         run: |
           if [ "${GITHUB_REF##*/}" == "production" ]; then
-            IMAGE_NAME="theaska18/$APP_NAME:production"
+            MODE="production"
+          elseif [ "${GITHUB_REF##*/}" == "uat]; then
+            MODE="uat"
           else
-            IMAGE_NAME="theaska18/$APP_NAME:development"
+            MODE="development
           fi
+          IMAGE_NAME="theaska18/$APP_NAME:$MODE"
           echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV  # Make IMAGE_NAME available to the following steps
 
       - name: Build and Push Docker Image
@@ -35,6 +38,6 @@ jobs:
         run: |
             apt-get update && apt-get install -y sshpass
             echo "$PROJECT_DIR"
-            sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@0.tcp.ap.ngrok.io -p 19059 "mkdir -p $PROJECT_DIR"
+            sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@0.tcp.ap.ngrok.io -p 19059 "mkdir -p $PROJECT_DIR-$MODE"
             echo "$PROJECT_DIR"
-            sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp  -P 19059 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no docker/docker-compose.yml root@0.tcp.ap.ngrok.io:/home/appsdocker/cms/docker-compose.yml
+            sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp  -P 19059 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no docker/docker-compose.yml root@0.tcp.ap.ngrok.io:$PROJECT_DIR-$MODE/docker-compose.yml
