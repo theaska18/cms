@@ -1,13 +1,8 @@
 # Gunakan image resmi PHP dengan Apache
-FROM php:8.2-cli
-
-RUN apt update && \
-    apt install -y apache2 && \
-    a2enmod rewrite && \
-    service apache2 restart
+FROM php:8.1-apache
 
 # Instal ekstensi PHP yang dibutuhkan CodeIgniter
-#RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Salin file konfigurasi
 COPY docker/php.ini /usr/local/etc/php/
