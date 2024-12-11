@@ -19,9 +19,9 @@ jobs:
         id: set_image_name
         run: |
           if [ "${GITHUB_REF##*/}" == "production" ]; then
-            IMAGE_NAME="theaska18/$APP_NAME:latest.production"
+            IMAGE_NAME="theaska18/$APP_NAME:production"
           else
-            IMAGE_NAME="theaska18/$APP_NAME:latest.development"
+            IMAGE_NAME="theaska18/$APP_NAME:development"
           fi
           echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV  # Make IMAGE_NAME available to the following steps
 
