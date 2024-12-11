@@ -1,24 +1,8 @@
-RUN apk add --no-cache \
-      freetype \
-      libjpeg-turbo \
-      libpng \
-      freetype-dev \
-      libjpeg-turbo-dev \
-      libpng-dev \
-    && docker-php-ext-configure gd \
-      --with-freetype=/usr/include/ \
-      --with-jpeg=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-enable gd \
-    && apk del --no-cache \
-      freetype-dev \
-      libjpeg-turbo-dev \
-      libpng-dev \
-    && rm -rf /tmp/*
+# Gunakan image resmi PHP dengan Apache
+FROM php:8.1-apache
 
-RUN apk add libzip-dev
-
-RUN docker-php-ext-install pdo pdo_mysql mysqli zip bcmath
+# Instal ekstensi PHP yang dibutuhkan CodeIgniter
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Salin file konfigurasi
 COPY docker/php.ini /usr/local/etc/php/
