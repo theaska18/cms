@@ -1,5 +1,5 @@
 # Gunakan image resmi PHP dengan Apache
-FROM php:7.0-apache
+FROM arm64v8/php:7.0-apache
 
 RUN apt-get update
 
