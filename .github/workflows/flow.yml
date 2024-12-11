@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_NAME: cms
-      PROJECT_DIR: /home/appsdocker/$APP_NAME
+      PROJECT_DIR: /home/appsdocker/${{ env.APP_NAME }}
     steps:
       - uses: actions/checkout@v4
       - name: Set Up Docker Buildx
