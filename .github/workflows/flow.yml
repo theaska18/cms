@@ -24,7 +24,7 @@ jobs:
           elseif [ "${GITHUB_REF##*/}" == "uat]; then
             MODE="uat"
           else
-            MODE="development
+            MODE="development"
           fi
           IMAGE_NAME="theaska18/$APP_NAME:$MODE"
           echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV  # Make IMAGE_NAME available to the following steps
