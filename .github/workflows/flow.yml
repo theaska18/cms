@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Authenticate
-          uses: docker/login-action@v1
-          with:
+        uses: docker/login-action@v1
+        with:
             username: ${{ secrets.DOCKER_PASSWORD }}
             password: ${{ secrets.DOCKER_USERNAME }}
 
