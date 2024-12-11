@@ -38,4 +38,4 @@ jobs:
             sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@0.tcp.ap.ngrok.io -p 19059 "mkdir -p $PROJECT_DIR"
             echo "$PROJECT_DIR"
             ls
-            sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r docker-compose.yml root@0.tcp.ap.ngrok.io:/home/appsdocker/cms -p 19059
+            sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r docker-compose.yml root@0.tcp.ap.ngrok.io:/home/appsdocker/cms -p 190599
