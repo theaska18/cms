@@ -21,7 +21,7 @@ jobs:
         run: |
           if [ "${GITHUB_REF##*/}" == "production" ]; then
             MODE="production"
-          elseif [ "${GITHUB_REF##*/}" == "uat" ]; then
+          elif [ "${GITHUB_REF##*/}" == "uat" ]; then
             MODE="uat"
           else
             MODE="development"
