@@ -59,6 +59,7 @@ jobs:
             apt-get update && apt-get install -y sshpass
             echo "$PROJECT_DIR"
             echo "$MODE"
+            sed -i -e "s~APP_NAME~$APP_NAME~" -e "s~MODE~$MODE~" -e "s~PORT~$PORT~" docker/docker-compose.yml
             sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST -p $SERVER_PORT "mkdir -p $PROJECT_DIR-$MODE"
             echo "$PROJECT_DIR"
             sshpass -p "$SERVER_PASSWORD" scp  -P $SERVER_PORT -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no docker/docker-compose.yml $SERVER_USER@$SERVER_HOST:$PROJECT_DIR-$MODE/docker-compose.yml

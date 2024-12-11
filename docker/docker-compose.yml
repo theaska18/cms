@@ -3,8 +3,8 @@ version: '3.3'
 services:
   app:
     build:
-      image: theaska18/cms:${TAG_NAME}
+      image: theaska18/APP_NAME:MODE
     ports:
-      - "19941:80"
+      - PORT:80
     volumes:
       - ./app:/var/www/html
