@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_NAME: cms
+      PROJECT_DIR: /home/appsdocker/$APP_NAME
     steps:
       - uses: actions/checkout@v4
       - name: Set Up Docker Buildx
@@ -30,3 +31,8 @@ jobs:
           echo "Using image name: $IMAGE_NAME"
           docker build -t $IMAGE_NAME -f docker/Dockerfile .
           docker push $IMAGE_NAME
+      - name : Deploy Server Data
+        run: |
+            apt-get update && apt-get install -y sshpass
+            sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@0.tcp.ap.ngrok.io -p 19059 "mkdir $PROJECT_DIR"
+            sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -o StrictHostKeyChecking=no -r docker/docker-compose.yml root@0.tcp.ap.ngrok.io:$PROJECT_DIR/docker-compose.yml -p 19059
