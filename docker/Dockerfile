@@ -9,7 +9,10 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libxml2-dev \
     libmysqlclient-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install ekstensi PHP
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd mysqli pdo pdo_mysql
 
 # Salin file konfigurasi
