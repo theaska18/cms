@@ -3,8 +3,8 @@
 FROM arm64v8/php:7.2-apache
 
 # Instal ekstensi PHP yang dibutuhkan CodeIgniter 
-#RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN apt-get update
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+#RUN apt-get update
 
 # Salin file konfigurasi
 COPY docker/php.ini /usr/local/etc/php/
