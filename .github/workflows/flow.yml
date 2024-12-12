@@ -49,19 +49,11 @@ jobs:
           echo "SERVER_HOST=$SERVER_HOST" >> $GITHUB_ENV
           echo "SERVER_PORT=$SERVER_PORT" >> $GITHUB_ENV
           echo "PORT=$PORT" >> $GITHUB_ENV
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: . # Context ke folder root project
-          file: docker/Dockerfile # Path ke Dockerfile
-          platforms: linux/arm64 # Arsitektur target
-          push: true # Push ke Docker registry
-          tags: ${{ env.IMAGE_NAME }}
       - name: Build and Push Docker Image
         run: |
           echo "Using image name: $IMAGE_NAME"
-          docker buildx build --platform linux/arm64 -t $IMAGE_NAME -f docker/Dockerfile .
-          docker push $IMAGE_NAME
+          docker buildx build --platform linux/arm64 -t $IMAGE_NAME -f docker/Dockerfile --push .
+          #docker push $IMAGE_NAME
       - name : Deploy Server Data
         run: |
             apt-get update && apt-get install -y sshpass
