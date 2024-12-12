@@ -12,6 +12,7 @@ COPY docker/sites.conf /etc/apache2/sites-available/000-default.conf
 
 # Aktifkan mod_rewrite untuk Apache
 #RUN a2enmod rewrite
+RUN ls
 
 # Set direktori kerja
 WORKDIR /var/www/html
