@@ -56,8 +56,7 @@ jobs:
           file: docker/Dockerfile # Path ke Dockerfile
           platforms: linux/amd64,linux/arm64 # Arsitektur target
           push: true # Push ke Docker registry
-          tags: |
-            theaska18/$APP_NAME:$MODE
+          tags: $IMAGE_NAME
       - name: Build and Push Docker Image
         run: |
           echo "Using image name: $IMAGE_NAME"
