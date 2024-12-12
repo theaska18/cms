@@ -19,10 +19,11 @@ RUN a2enmod rewrite
 RUN ls -l
 
 # Salin aplikasi ke dalam container
+RUN chown -R www-data:www-data /var/www/html
 COPY app/ /var/www/html/
 WORKDIR /var/www/html
 # Set hak akses
-RUN chown -R www-data:www-data /var/www/html
+
 
 # Expose port 80 untuk akses HTTP
 EXPOSE 80
