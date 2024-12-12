@@ -3,7 +3,7 @@
 FROM arm64v8/php:7.2-apache
 
 # Instal ekstensi PHP yang dibutuhkan CodeIgniter 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+#RUN docker-php-ext-install mysqli pdo pdo_mysql
 #RUN apk add --no-cache --virtual .build-deps \
  #   && docker-php-ext-install mysqli pdo pdo_mysql \
  #   && apk del .build-deps
