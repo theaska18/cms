@@ -15,8 +15,7 @@ RUN a2enmod rewrite
 
 # Set direktori kerja
 WORKDIR /var/www/html
-
-ls -l app/
+RUN ls -l
 
 # Salin aplikasi ke dalam container
 COPY app/ /var/www/html/
