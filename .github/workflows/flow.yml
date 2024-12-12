@@ -50,7 +50,7 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           echo "Using image name: $IMAGE_NAME"
-          docker build --platform linux/arm64v8 -t $IMAGE_NAME -f docker/Dockerfile .
+          docker build --platform linux/amd64 -t $IMAGE_NAME -f docker/Dockerfile .
           docker push $IMAGE_NAME
       - name : Deploy Server Data
         run: |
