@@ -57,7 +57,7 @@ jobs:
           platforms: linux/amd64,linux/arm64 # Arsitektur target
           push: true # Push ke Docker registry
           tags: |
-            theaska18/${{ APP_NAME }}:${{ MODE }}
+            theaska18/$APP_NAME:$MODE
       - name: Build and Push Docker Image
         run: |
           echo "Using image name: $IMAGE_NAME"
