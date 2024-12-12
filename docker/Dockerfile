@@ -4,14 +4,7 @@ FROM arm64v8/php:7.2-apache
 
 # Instal ekstensi PHP yang dibutuhkan CodeIgniter 
 #RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    unzip \
-    git \
-    && docker-php-ext-install zip \
-    && docker-php-ext-enable zip \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update
 
 # Salin file konfigurasi
 COPY docker/php.ini /usr/local/etc/php/
