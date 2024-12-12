@@ -3,7 +3,7 @@
 FROM php:7.2-apache
 
 # Instal ekstensi PHP yang dibutuhkan CodeIgniter 
-#RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 #RUN apt-get update
 
 # Salin file konfigurasi
@@ -11,7 +11,7 @@ COPY docker/php.ini /usr/local/etc/php/
 COPY docker/sites.conf /etc/apache2/sites-available/000-default.conf
 
 # Aktifkan mod_rewrite untuk Apache
-#RUN a2enmod rewrite
+RUN a2enmod rewrite
 
 # Set direktori kerja
 WORKDIR /var/www/html
