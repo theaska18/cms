@@ -15,12 +15,12 @@ COPY docker/sites.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 
 # Set direktori kerja
-WORKDIR /var/www/html
+
 RUN ls -l
 
 # Salin aplikasi ke dalam container
 COPY app/ /var/www/html/
-
+WORKDIR /var/www/html
 # Set hak akses
 RUN chown -R www-data:www-data /var/www/html
 
